@@ -1,0 +1,13 @@
+:root {
+    --reactiform-primary: #2563eb;
+    --reactiform-error: #dc2626;
+    --reactiform-border: 1px solid #e5e7eb;
+}
+
+.richtext-toolbar {
+    background: var(--reactiform-primary);
+}
+
+.error-message {
+    color: var(--reactiform-error);
+}
