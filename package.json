@@ -2,7 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "dev:reactiform": "cd node_modules/@incodiy/reactiform && npm run dev"
     },
     "dependencies": {
         "@incodiy/reactiform": "github:incodiy/reactiform#main",
