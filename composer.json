@@ -2,6 +2,9 @@
     "name": "incodiy/reactiform",
     "description": "A package for generating form elements using Laravel on the backend and React on the frontend used to minimize code repetition by allowing the creation of form elements with just a few lines in a Laravel controller",
     "type": "library",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "license": "MIT",
     "require": {
         "php": "^8.0",
         "laravel/framework": "^10.0"
