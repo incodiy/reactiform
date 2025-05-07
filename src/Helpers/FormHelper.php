@@ -5,7 +5,7 @@ namespace Incodiy\Reactiform\Helpers;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
-class FormHelper
+trait FormHelper
 {
     /**
      * Process HTML attributes for React compatibility
