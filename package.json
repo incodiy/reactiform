@@ -2,29 +2,41 @@
     "name": "@incodiy/reactiform",
     "version": "1.0.0",
     "description": "React Form Components for Laravel Integration",
+    "main": "./dist/reactiform.umd.js",
+    "module": "./dist/reactiform.es.js",
+    "exports": {
+        ".": {
+            "import": "./dist/reactiform.es.js",
+            "require": "./dist/reactiform.umd.js"
+        }
+    },
     "scripts": {
-        "dev": "vite",
-        "build": "vite build",
+        "dev": "vite build --watch --emptyOutDir",
+        "build": "vite build --emptyOutDir",
+        "prepublish": "npm run build",
         "dev:reactiform": "cd node_modules/@incodiy/reactiform && npm run dev"
     },
+    "peerDependencies": {
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0"
+    },
     "dependencies": {
-        "@incodiy/reactiform": "github:incodiy/reactiform#main",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-datepicker": "^4.8.0",
-        "rc-slider": "^10.1.0",
-        "react-input-mask": "^2.0.4",
-        "react-quill": "^2.0.0",
-        "react-select": "^5.7.0",
-        "react-dropzone": "^14.2.3",
-        "file-type": "^18.0.0",
-        "axios": "^1.4.0",
-        "react-signature-canvas": "^1.0.3",
-        "react-leaflet": "^4.2.1",
-        "leaflet": "^1.9.4",
-        "react-rating-stars-component": "^2.2.0",
         "@fortawesome/free-regular-svg-icons": "^6.4.0",
-        "@fortawesome/react-fontawesome": "^0.2.0"
+        "@fortawesome/react-fontawesome": "^0.2.0",
+        "@incodiy/reactiform": "github:incodiy/reactiform#main",
+        "axios": "^1.4.0",
+        "file-type-browser": "^1.0.0",
+        "leaflet": "^1.9.4",
+        "mime-types": "^3.0.1",
+        "rc-slider": "^10.1.0",
+        "react-datepicker": "^4.8.0",
+        "react-dropzone": "^14.2.3",
+        "react-input-mask": "^2.0.4",
+        "react-leaflet": "^4.2.1",
+        "react-quill": "^2.0.0",
+        "react-rating-stars-component": "^2.2.0",
+        "react-select": "^5.7.0",
+        "react-signature-canvas": "^1.0.3"
     },
     "devDependencies": {
         "@vitejs/plugin-react": "^4.0.3",

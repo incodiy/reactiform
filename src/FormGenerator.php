@@ -3,6 +3,8 @@ namespace Incodiy\Reactiform;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
+use Incodiy\Reactiform\Contracts\FormInterface;
+use Incodiy\Reactiform\Helpers\FormHelper;
 
 /**
  * 
@@ -23,6 +25,8 @@ use Illuminate\Support\Arr;
  */
 class FormGenerator
 {
+    use FormHelper;
+    
     protected static $idCounter = 0;
     protected $elements = [];
     protected $formConfig = [];
@@ -453,6 +457,33 @@ class FormGenerator
         
         return $this;
     }
+
+    protected function processMultiFileAttributes($name, &$attributes)
+    {
+        $this->applyValidation($name, $attributes);
+        
+        if(isset($attributes['rules'])) {
+            $attributes['data-rules'] = $attributes['rules'];
+            unset($attributes['rules']);
+        }
+    }
+
+    public function multifile($name, $attributes = [])
+    {
+        $this->processMultiFileAttributes($name, $attributes);
+        
+        $config = $this->commonSetup($name, $attributes);
+        
+        $this->elements[] = array_merge($config, [
+            'type' => 'multifile',
+            'max_files' => Arr::get($attributes, 'max_files', 5),
+            'max_size' => Arr::get($attributes, 'max_size', '10MB'),
+            'preview' => Arr::get($attributes, 'preview', true),
+            'accept' => Arr::get($attributes, 'accept', '*/*')
+        ]);
+        
+        return $this;
+    }
     
     /**
         Backend Handler:
@@ -474,20 +505,20 @@ class FormGenerator
         ->close()
         ->render();
      */
-    public function multifile($name, $attributes = [])
-    {
-        $config = $this->commonSetup($name, $attributes);
+    // public function multifile($name, $attributes = [])
+    // {
+    //     $config = $this->commonSetup($name, $attributes);
         
-        $this->elements[] = array_merge($config, [
-            'type' => 'multifile',
-            'max_files' => Arr::get($attributes, 'max_files', 5),
-            'max_size' => Arr::get($attributes, 'max_size', '10MB'),
-            'preview' => Arr::get($attributes, 'preview', true),
-            'accept' => Arr::get($attributes, 'accept', '*/*')
-        ]);
+    //     $this->elements[] = array_merge($config, [
+    //         'type' => 'multifile',
+    //         'max_files' => Arr::get($attributes, 'max_files', 5),
+    //         'max_size' => Arr::get($attributes, 'max_size', '10MB'),
+    //         'preview' => Arr::get($attributes, 'preview', true),
+    //         'accept' => Arr::get($attributes, 'accept', '*/*')
+    //     ]);
         
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function signature($name, $attributes = [])
     {
@@ -569,7 +600,8 @@ class FormGenerator
         return view('form-components::form-container', [
             'elements' => $this->elements,
             'formConfig' => $this->formConfig,
-            'buttons' => $this->buttons
+            'buttons' => $this->buttons,
+            'validationErrors' => $this->validationErrors // Tambahkan ini
         ]);
     }
 }
