@@ -32,7 +32,7 @@ Powerful form generator for Laravel with React frontend components. Create compl
 
 ## Publish assets
 
-    php artisan vendor:publish --provider="YourNamespace\Form\Providers\FormServiceProvider" --tag=form-components
+    php artisan vendor:publish --provider="Incodiy\Reactiform\Providers\FormServiceProvider" --tag=form-components
 
 
 
@@ -40,27 +40,26 @@ Powerful form generator for Laravel with React frontend components. Create compl
 
 1. Create form in controller:
 
-    use Incodiy\Reactiform\Facades\Form;
-
-    public function show()
-    {
-        return Form::text('Username', ['placeholder' => 'Enter your username'])
-            ->select('Country', ['us', 'id', 'jp'], ['required' => true])
-            ->render();
-    }
+        use Incodiy\Reactiform\Facades\Form;
+        
+        public function show() {
+            return Form::text('Username', ['placeholder' => 'Enter your username'])
+                ->select('Country', ['us', 'id', 'jp'], ['required' => true])
+                ->render();
+        }
 
 2. Display in Blade:
 
-    <!DOCTYPE html>
-    <html>
-    <head>
-        @viteReactRefresh
-        @vite(['resources/js/app.js'])
-    </head>
-    <body>
-        {!! $form !!}
-    </body>
-    </html>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            @viteReactRefresh
+            @vite(['resources/js/app.js'])
+        </head>
+        <body>
+            {!! $form !!}
+        </body>
+        </html>
 
 
 ## Available Components
@@ -123,7 +122,8 @@ Checkbox Group
 
 ## Custom Styling
 
-    /* resources/css/form.css */
+    @resources/css/form.css:
+    
     .form-multiselect {
         border: 2px solid #e2e8f0;
         border-radius: 0.5rem;
