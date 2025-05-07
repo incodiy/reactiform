@@ -15,7 +15,10 @@ class ReactiformServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'reactiform');
+        $this->loadViewsFrom(
+            __DIR__.'/../../resources/views', 'reactiform',
+            __DIR__.'/../../resources/views/form-components', 'form-components'
+        );
         $this->loadViewComponentsAs('reactiform', [
             'Incodiy\Reactiform\View\Components\SelectComponent',
             'Incodiy\Reactiform\View\Components\TextComponent',
