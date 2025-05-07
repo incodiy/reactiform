@@ -4,7 +4,7 @@ namespace Incodiy\Reactiform\Providers;
 use Illuminate\Support\ServiceProvider;
 use Incodiy\Reactiform\FormGenerator;
 
-class FormServiceProvider extends ServiceProvider
+class ReactiformServiceProvider extends ServiceProvider
 {
     public function register()
     {

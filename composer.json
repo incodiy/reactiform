@@ -22,10 +22,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Incodiy\\Reactiform\\Providers\\FormServiceProvider"
+                "Incodiy\\Reactiform\\Providers\\ReactiformServiceProvider"
             ],
             "aliases": {
-                "Reactiform": "Incodiy\\Reactiform\\Facades\\Form"
+                "Reactiform": "Incodiy\\Reactiform\\Facades\\Reactiform"
             }
         }
     }

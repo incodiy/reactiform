@@ -4,7 +4,7 @@ namespace Incodiy\Reactiform\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Form extends Facade
+class Reactiform extends Facade
 {
     protected static function getFacadeAccessor()
     {
